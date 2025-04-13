@@ -14,7 +14,6 @@ def print_teams(students):
             f"{pib} - {grypa}, {kyrs} курс. Вища математика: {s1}, Дискретна математика: {s2}, Програмування: {s3}, Програмування мовою пайтон: {s4}")
     MenuQuestion()
 
-
 # Функція Денисенка Дениса для додавання даних у словник
 def add_team(students, pib):
     if pib in students:
@@ -37,7 +36,6 @@ def add_team(students, pib):
     print("Студента додано/оновлено.")
     MenuQuestion()
 
-
 # Функція Кубуші Олексія сортування студентів за оцінкою з вищої математики (від найбільшої до найменшої)
 def filter_by_math_grade(students):
     print("\nСортування студентів за оцінкою з вищої математики (від найбільшої до найменшої):")
@@ -51,6 +49,15 @@ def filter_by_math_grade(students):
         print(f"{pib} - Вища математика: {data[2]}")
     MenuQuestion()
 
+# Функція Бобирєвой Тетяни видалення студента
+def delete_student(students):
+    pib = input("Введіть ПІБ студента, якого потрібно видалити (Прізвище_ім'я_побатькові): ")
+    if pib in students:
+        del students[pib]
+        print(f"Студента '{pib}' видалено.")
+    else:
+        print(f"Студента '{pib}' не знайдено.")
+    MenuQuestion()
 
 # Повернення в меню
 def MenuQuestion():
@@ -60,13 +67,13 @@ def MenuQuestion():
     else:
         print("Завершення роботи.")
 
-
 # Меню
 def Menu():
     print("\nМеню:")
     print("1 - Показати журнал")
     print("2 - Додати студента")
     print("3 - Сортувати за оцінкою з вищої математики")
+    print("4 - Видалити студента")
     print("0 - Завершення роботи")
 
     num = input("Оберіть пункт меню: ")
@@ -78,11 +85,12 @@ def Menu():
         add_team(students, pib)
     elif num == "3":
         filter_by_math_grade(students)
+    elif num == "4":
+        delete_student(students)
     elif num == "0":
         print("Завершення роботи.")
     else:
         print("\nНевірний вибір!\n")
         Menu()
-
 
 Menu()
